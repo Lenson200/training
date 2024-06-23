@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trainee Progress Detail</title>
+</head>
+<body>
+    <h1>{{ trainee_progress.trainee.name }} - {{ trainee_progress.training_module.title }}</h1>
+    <p>Progress: {{ trainee_progress.progress }}%</p>
+    <a href="{% url 'trainee_progress_update' trainee_progress.pk %}">Update</a>
+    <a href="{% url 'trainee_progress_delete' trainee_progress.pk %}">Delete</a>
+</body>
+</html>
+{% endblock %}

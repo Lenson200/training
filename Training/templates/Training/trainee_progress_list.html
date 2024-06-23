@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trainee Progress</title>
+</head>
+<body>
+    <h1>Trainee Progress</h1>
+    <a href="{% url 'trainee_progress_create' %}">Create New Progress</a>
+    <ul>
+        {% for progress in trainee_progress %}
+            <li>
+                <a href="{% url 'trainee_progress_detail' progress.pk %}">{{ progress.trainee.name }} - {{ progress.training_module.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Module Detail</title>
+</head>
+<body>
+    <h1>{{ training_module.title }}</h1>
+    <p>{{ training_module.description }}</p>
+    <a href="{% url 'training_module_update' training_module.pk %}">Update</a>
+    <a href="{% url 'training_module_delete' training_module.pk %}">Delete</a>
+</body>
+</html>
+{% endblock %}

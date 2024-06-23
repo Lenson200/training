@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Training Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Training Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'training_module_list' %}">Training Modules</a></li>
+                <li><a href="{% url 'trainee_progress_list' %}">Trainee Progress</a></li>
+                <li><a href="{% url 'exam_list' %}">Exams</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block body %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Training Management System</p>
+    </footer>
+</body>
+</html>

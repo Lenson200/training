@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Modules</title>
+</head>
+<body>
+    <h1>Training Modules</h1>
+    <a href="{% url 'training_module_create' %}">Create New Training Module</a>
+    <ul>
+        {% for module in training_modules %}
+            <li>
+                <a href="{% url 'training_module_detail' module.pk %}">{{ module.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}
