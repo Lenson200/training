@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     var progressData = document.getElementById("progress-data");
 
+    if (!progressData) {
+        console.error("Element with ID 'progress-data' not found.");
+        return;
+    }
+
     var totalPages = progressData.getAttribute("data-total-pages");
     var traineeId = progressData.getAttribute("data-trainee-id");
     var moduleId = progressData.getAttribute("data-module-id");

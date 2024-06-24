@@ -27,7 +27,10 @@ def training_module_detail(request, pk):
             training_module.total_pages = num_pages
             training_module.save()
 
-    return render(request, 'Training/trialview.html', {'training_module': training_module})
+    return render(request, 'Training/trialview.html', {
+    'training_module': training_module,
+    'page_range': range(1, training_module.total_pages + 1)
+})
 
 def training_module_create(request):
     if request.method == 'POST':

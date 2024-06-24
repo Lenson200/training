@@ -26,5 +26,3 @@ urlpatterns = [
     path('exams/<int:pk>/update/', views.exam_update, name='exam_update'),
     path('exams/<int:pk>/delete/', views.exam_delete, name='exam_delete'),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

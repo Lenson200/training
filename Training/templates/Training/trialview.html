@@ -1,5 +1,5 @@
 {% extends 'Training/layout.html' %}
-
+{% load static %}
 {% block body %}
 <html lang="en">
 <head>
@@ -24,8 +24,16 @@
     <h1>{{ training_module.title }}</h1>
     <p>{{ training_module.description }}</p>
 
+    <div id="progress-data"
+         data-total-pages="{{ training_module.total_pages }}"
+         data-trainee-id="{{ trainee_id }}"
+         data-module-id="{{ training_module.id }}"
+         data-csrf-token="{{ csrf_token }}"
+         data-url="{% url 'mark_progress' %}">
+    </div>
+
     <div class="pdf-container">
-        {% for page_num in range(1, training_module.total_pages + 1) %}
+        {% for page_num in page_range %}
             <div class="page {% if forloop.first %}active{% endif %}" id="page-{{ page_num }}">
                 <object data="{% static 'uploads/' %}{{ training_module.file.name }}#page={{ page_num }}" type="application/pdf" width="100%" height="100%">
                     <p>It appears you don't have a PDF plugin for this browser.
@@ -35,9 +43,7 @@
         {% endfor %}
     </div>
 
-
-<script src="{% static 'Training/pagehandling.js' %}"></script>     
-    
+    <script src="{% static 'Training/pagehandling.js' %}"></script>     
     
 </body>
 </html>
