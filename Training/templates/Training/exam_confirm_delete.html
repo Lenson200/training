@@ -1,4 +1,4 @@
-{% extends 'Training/layout.html' %}
+{% extends 'layout.html' %}
 {% block body %}
 <html lang="en">
 <head>
@@ -6,12 +6,12 @@
     <title>Confirm Delete</title>
 </head>
 <body>
-    <h1>Are you sure you want to delete {{ training_module.title }}?</h1>
+    <h1>Are you sure you want to delete {{ exam.title }}?</h1>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Yes, delete</button>
     </form>
-    <a href="{% url 'training_module_detail' training_module.pk %}">Cancel</a>
+    <a href="{% url 'exam_detail' exam.pk %}">Cancel</a>
 </body>
 </html>
 {% endblock %}

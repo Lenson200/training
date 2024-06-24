@@ -1,0 +1,17 @@
+{% extends 'Training/layout.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Detail</title>
+</head>
+<body>
+    <h1>{{ exam.title }}</h1>
+    <p>{{ exam.description }}</p>
+    <p>Date: {{ exam.date }}</p>
+    <p>Max Score: {{ exam.max_score }}</p>
+    <a href="{% url 'exam_update' exam.pk %}">Update</a>
+    <a href="{% url 'exam_delete' exam.pk %}">Delete</a>
+</body>
+</html>
+{% endblock %}

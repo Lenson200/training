@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from PyPDF2 import PdfReader
 # Create your models here.
 
 class User(AbstractUser):
@@ -10,9 +11,17 @@ class TrainingModule(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    file = models.FileField(upload_to='uploads/', blank=True, null=True)
+    total_pages = models.IntegerField(default=0)
+    
     def __str__(self):
         return self.title
+    def update_total_pages(self):
+        if self.file:
+            with open(self.file.path, 'rb') as f:
+                pdf_reader = PdfReader(f)
+                self.total_pages = len(pdf_reader.pages)
+                self.save()
 
 class Trainee(models.Model):
     name = models.CharField(max_length=100)

@@ -1,9 +1,24 @@
 {% extends 'Training/layout.html' %}
+
 {% block body %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Training Module Detail</title>
+    <style>
+        .pdf-container {
+            width: 100%;
+            height: 800px; /* Adjust height as needed */
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <h1>{{ training_module.title }}</h1>
@@ -16,11 +31,14 @@
                     <p>It appears you don't have a PDF plugin for this browser.
                        <a href="{% static 'uploads/' %}{{ training_module.file.name }}">Click here to download the PDF file.</a></p>
                 </object>
-                <!-- <button onclick="markPageAsRead({{ page_num }})">Mark as Read</button> -->
             </div>
         {% endfor %}
     </div>
+
+
+<script src="{% static 'Training/pagehandling.js' %}"></script>     
     
-    </body>
+    
+</body>
 </html>
 {% endblock %}

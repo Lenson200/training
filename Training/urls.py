@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     # Training Module URLs
     path("", views.index, name="index"),
@@ -11,6 +12,7 @@ urlpatterns = [
     path('training-modules/<int:pk>/delete/', views.training_module_delete, name='training_module_delete'),
     
     # Trainee Progress URLs
+    path('mark-progress/', views.mark_progress, name='mark_progress'),
     path('trainee-progress/', views.trainee_progress_list, name='trainee_progress_list'),
     path('trainee-progress/<int:pk>/', views.trainee_progress_detail, name='trainee_progress_detail'),
     path('trainee-progress/create/', views.trainee_progress_create, name='trainee_progress_create'),
@@ -24,3 +26,5 @@ urlpatterns = [
     path('exams/<int:pk>/update/', views.exam_update, name='exam_update'),
     path('exams/<int:pk>/delete/', views.exam_delete, name='exam_delete'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
