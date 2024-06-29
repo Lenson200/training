@@ -37,6 +37,8 @@ class TraineeProgress(models.Model):
     progress = models.PositiveIntegerField()  # e.g., percentage of completion
     started_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    completed = models.BooleanField(default=False)
+    completion_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.trainee.name} - {self.training_module.title}"

@@ -9,9 +9,10 @@ urlpatterns = [
     path('training-modules/<int:pk>/', views.training_module_detail, name='training_module_detail'),
     path('training-modules/create/', views.training_module_create, name='training_module_create'),
     path('training-modules/<int:pk>/update/', views.training_module_update, name='training_module_update'),
-    path('training-modules/<int:pk>/delete/', views.training_module_delete, name='training_module_delete'),
-    
+    path('training_module/<int:pk>/delete/', views.training_module_delete, name='training_module_delete'),
+    path('show_all/', views.show_all, name='show_all'),
     # Trainee Progress URLs
+    path('mark_module_complete/', views.mark_module_complete, name='mark_module_complete'),
     path('mark-progress/', views.mark_progress, name='mark_progress'),
     path('trainee-progress/', views.trainee_progress_list, name='trainee_progress_list'),
     path('trainee-progress/<int:pk>/', views.trainee_progress_detail, name='trainee_progress_detail'),
@@ -25,4 +26,4 @@ urlpatterns = [
     path('exams/create/', views.exam_create, name='exam_create'),
     path('exams/<int:pk>/update/', views.exam_update, name='exam_update'),
     path('exams/<int:pk>/delete/', views.exam_delete, name='exam_delete'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

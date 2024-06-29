@@ -1,15 +1,28 @@
 {% extends 'Training/layout.html' %}
+{% load static %}
 {% block body %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Trainee Progress Detail</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'pagehandling.js' %}"></script>
+    
 </head>
 <body>
     <h1>{{ trainee_progress.trainee.name }} - {{ trainee_progress.training_module.title }}</h1>
     <p>Progress: {{ trainee_progress.progress }}%</p>
     <a href="{% url 'trainee_progress_update' trainee_progress.pk %}">Update</a>
     <a href="{% url 'trainee_progress_delete' trainee_progress.pk %}">Delete</a>
+
+    <!-- Hidden div to store necessary data for JavaScript -->
+    <div id="progress-data"
+         data-total-pages="{total_pages}"
+         data-trainee-id="{{ trainee_progress.trainee.id }}"
+         data-module-id="{{ trainee_progress.training_module.id }}"
+         data-url="{% url 'mark_progress' %}"
+         data-csrf-token="{{ csrf_token }}">
+    </div>
 </body>
 </html>
 {% endblock %}

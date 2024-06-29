@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+h1 {
+    color: #333;
+}
+.module-list {
+    list-style-type: none;
+    padding: 0;
+}
+.module-list li {
+    margin-bottom: 10px;
+}
+.module-list li a {
+    text-decoration: none;
+    color: #007bff;
+}
+.module-actions {
+    margin-top: 20px;
+}
+.module-actions a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+}
+.module-actions a:hover {
+    background-color: #27b300;
+}
