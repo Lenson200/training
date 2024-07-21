@@ -7,12 +7,13 @@
         </head>
         <body>
             <h1>Training Modules</h1>
-
+            
             <div class="module-actions">
-                <a href="{% url 'training_module_create' %}">Create New Training Module</a>
+               <a href="{% url 'training_module_create' %}">Create New Training Module</a>
+               {% if request.user.is_superuser %}
                 <a href="{% url 'show_all' %}">Delete Training Module</a>
-            </div>
-        
+              </div>
+             {% endif %}
             <ul class="module-list">
                 {% for module in training_modules %}
                     <li>

@@ -7,14 +7,15 @@
 </head>
 <body>
     <h1>Exams</h1>
-    <a href="{% url 'exam_create' %}">Create New Exam</a>
-    <ul>
+    
         {% for exam in exams %}
             <li>
                 <a href="{% url 'exam_detail' exam.pk %}">{{ exam.title }}</a>
             </li>
         {% endfor %}
     </ul>
+    <a href="{% url 'exam_create' %}">Create new exam scores</a>
+    <ul>
 </body>
 </html>
 {% endblock %}

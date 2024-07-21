@@ -1,5 +1,12 @@
 from django import forms
-from .models import TrainingModule, TraineeProgress, Exam
+from .models import User,TrainingModule, TraineeProgress, Exam,Trainee,UserProfile
+from django.core.exceptions import ValidationError
+from django import forms
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_pic',]
 
 class TrainingModuleForm(forms.ModelForm):
     class Meta:
@@ -24,3 +31,13 @@ class ExamForm(forms.ModelForm):
     class Meta:
         model = Exam
         fields = ['training_module', 'title', 'description', 'date', 'max_score']
+
+# class CreateTraineeForm(forms.ModelForm):
+#     class Meta:
+#         model = Trainee
+#         fields = ['name', 'staffnumber', 'email']
+        
+class TraineeUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Trainee
+        fields = ['name', 'Team','Facility','staffnumber', 'designation', 'email', 'age']

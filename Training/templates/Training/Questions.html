@@ -1,0 +1,38 @@
+{% extends 'Training/layout.html' %}
+{% load static %}
+{% block body %}
+<h1>{{ exam.title }}</h1>
+<p>Date: {{ exam.date }}</p>
+<div id="questions">
+    {% for question in questions %}
+        <div class="question">
+            <p>{{ question.text }}</p>
+            {% if question.image %}
+                <img src="{{ question.image.url }}" alt="Question image">
+            {% endif %}
+            <ul>
+                {% for choice in question.choices.all %}
+                    <li>{{ choice.text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+
+<div id="pagination">
+    {% if page > 1 %}
+        <a href="{% url 'exam_detail_page' exam.pk page=page-1 %}">Previous</a>
+    {% endif %}
+    <span>Page {{ page }} of {{ total_pages }}</span>
+    {% if page < total_pages %}
+        <a href="{% url 'exam_detail_page' exam.pk page=page+1 %}">Next</a>
+    {% endif %}
+</div>
+
+<div id="progress">
+    <input type="range" min="0" max="100" value="{{ trainee_progress.progress }}" id="progressRange">
+    <span id="progressValue">{{ trainee_progress.progress }}%</span>
+</div>
+
+
+{% endblock %}

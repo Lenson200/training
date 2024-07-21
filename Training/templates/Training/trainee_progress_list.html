@@ -11,7 +11,7 @@
     <ul>
         {% for progress in trainee_progress %}
             <li>
-                <a href="{% url 'trainee_progress_detail' progress.pk %}">{{ progress.trainee.name }} - {{ progress.training_module.title }}</a>
+                <a href="{% url 'trainee_progress_detail' progress.pk %}">{{ progress.trainee.name }} - {{ progress.training_module.title }} </a>
             </li>
         {% endfor %}
     </ul>

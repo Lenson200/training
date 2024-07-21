@@ -27,7 +27,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Training',
+    'Training.apps.TrainingConfig',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

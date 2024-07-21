@@ -1,0 +1,17 @@
+{% extends 'Training/layout.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Trainee </title>
+</head>
+<body>
+    <h1>Create Trainee</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Trainee</button>
+    </form>
+</body>
+</html>
+{% endblock %}
