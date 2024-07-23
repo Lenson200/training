@@ -339,6 +339,34 @@ def exam_delete(request, pk):
         return redirect('exam_list')
     return render(request, 'Training/exam_confirm_delete.html', {'exam': exam})
 
+
+# def add_comment(request, id):
+#     if not request.user.is_authenticated:
+#         return render(request, 'Training/login.html', {
+#             'message': 'Must be logged in to be able to add or see comments!'
+#         })
+
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.user = request.user
+#             if request.user.is_trainee:
+#                 comment.trainee = request.user.trainee_profile
+#             comment.save()
+
+#             return HttpResponseRedirect(reverse('index'))
+#     else:
+#         form = CommentForm()
+
+    # If form is invalid or it's a GET request, render the template with the form
+    comments = Comment.objects.filter(trainee_id=id)
+    return render(request, 'Training/training_module_list.html', {
+        'form': form,
+        'user': request.user,
+        'id': id,
+        'comments': comments,
+    })
 #other alternative 
 # def training_module_detail(request, pk):
 #     training_module = get_object_or_404(TrainingModule, pk=pk)

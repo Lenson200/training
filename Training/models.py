@@ -101,3 +101,12 @@ class ExamResult(models.Model):
 
     def __str__(self):
         return f"{self.trainee.name} - {self.exam.title} - {self.score}"
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    trainee = models.ForeignKey(Trainee, on_delete=models.CASCADE, blank=True, null=True)
+    text = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user}: {self.text}'
+
